@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"
+          rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+            th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <script src="https://d3js.org/d3.v4.min.js"
+            th:src="@{/webjars/d3js/4.13.0/d3.min.js}"></script>
+
+    <link href="../static/css/style.css"
+          th:href="@{/css/style.css}" rel="stylesheet" media="screen" />
+    <meta charset="UTF-8">
+    <title>Courses List</title>
+</head>
+<body>
+<div class="container">
+    <h1>SOFTWARE ENGINEERING</h1>
+    <h2>Software Development Concentration</h2>
+    <h3>Course Details</h3>
+    <div th:if="${course == null}">
+        <h1 class="bg-danger">No course with catalog number [[${catalogNumber}]] found!</h1>
+    </div>
+    <div th:unless="${course == null}" class="table-responsive">
+        <table class="table table-bordered table-condensed">
+            <thead>
+                <tr><td colspan="2">[[${course.id}]]: [[${course.name}]]</td></tr>
+            </thead>
+            <tbody>
+                <tr><td>Category</td><td th:text="${course.category}"></td></tr>
+                <tr><td>Field</td><td th:text="${course.field}"></td></tr>
+                <tr><td>Prerequisites</td><td>[[${course.prerequisites}]]</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
