@@ -2,20 +2,21 @@ package dev.nardos.springmvc101.model;
 
 public class Course {
     String id;
-    int creditHours;
     String subject;
-    int catalogNumber;
-    String name;
+    Integer catalogNumber;
+    String title;
     String prerequisites;
     String category;
     String field;
 
-    public Course(String id, int creditHours, String subject, int catalogNumber, String name, String prerequisites, String category, String field) {
+    public Course() {
+    }
+
+    public Course(String id, String subject, int catalogNumber, String title, String prerequisites, String category, String field) {
         this.id = id;
-        this.creditHours = creditHours;
         this.subject = subject;
         this.catalogNumber = catalogNumber;
-        this.name = name;
+        this.title = title;
         this.prerequisites = prerequisites;
         this.category = category;
         this.field = field;
@@ -25,20 +26,16 @@ public class Course {
         return id;
     }
 
-    public int getCreditHours() {
-        return creditHours;
-    }
-
     public String getSubject() {
         return subject;
     }
 
-    public int getCatalogNumber() {
+    public Integer getCatalogNumber() {
         return catalogNumber;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
     public String getPrerequisites() {
@@ -51,5 +48,33 @@ public class Course {
 
     public String getField() {
         return field;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public void setCatalogNumber(Integer catalogNumber) {
+        this.catalogNumber = catalogNumber;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setPrerequisites(String prerequisites) {
+        this.prerequisites = prerequisites;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setField(String field) {
+        this.field = field;
     }
 }

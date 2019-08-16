@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"
+          rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+            th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <script src="https://d3js.org/d3.v4.min.js"
+            th:src="@{/webjars/d3js/4.13.0/d3.min.js}"></script>
+
+    <link href="../static/css/style.css"
+          th:href="@{/css/style.css}" rel="stylesheet" media="screen" />
+    <meta charset="UTF-8">
+    <title>Courses List</title>
+</head>
+<body>
+<div class="container">
+    <h1>SOFTWARE ENGINEERING</h1>
+    <h2>Software Development Concentration</h2>
+    <h3>New Course Entry Form</h3>
+    <div>
+        <form class="form-horizontal" th:object="${course}" action="#" th:action="@{/course}" method="post">
+            <div th:if="${idReadOnly}">
+                <h1>[[*{subject}]]-[[*{catalogNumber}]]</h1>
+                <input type="hidden" name="subject" th:value="*{subject}" />
+                <input type="hidden" name="catalogNumber" th:value="*{catalogNumber}" />
+            </div>
+            <input type="hidden" th:field="*{id}"/>
+            <div class="form-row">
+                <div th:unless="${idReadOnly}" class="form-group col-sm-2">
+                    <label for="subject" class="control-label">Subject</label>
+                    <select class="form-control" th:field="*{subject}" th:disabled="${idReadOnly}">
+                        <option value="SE" selected>SE</option>
+                        <option value="CNS">CNS</option>
+                        <option value="CSC">CSC</option>
+                        <option value="DSC">DSC</option>
+                        <option value="GAM">GAM</option>
+                        <option value="HCI">HCI</option>
+                        <option value="IS">IS</option>
+                    </select>
+                </div>
+                <div th:unless="${idReadOnly}" class="form-group col-sm-2">
+                    <label for="catalogNumber" class="control-label">Catalog Number</label>
+                    <input type="text" class="form-control" th:field="*{catalogNumber}" th:disabled="${idReadOnly}" />
+                </div>
+                <div class="form-group col-sm-8">
+                    <label for="name" class="control-label">Title</label>
+                    <input type="text" class="form-control" th:field="*{title}" />
+                </div>
+            </div>
+            <fieldset class="form-group">
+                <div><label for="category" class="control-label">Category</label></div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" th:field="*{category}" value="Introductory">
+                    <label class="form-check-label" for="category">Introductory</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" th:field="*{category}" value="Foundation">
+                    <label class="form-check-label" for="category">Foundation</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" th:field="*{category}" value="Major Elective">
+                    <label class="form-check-label" for="category">Major Elective</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" th:field="*{category}" value="Advanced">
+                    <label class="form-check-label" for="category">Advanced</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" th:field="*{category}" value="Capstone">
+                    <label class="form-check-label" for="category">Capstone</label>
+                </div>
+            </fieldset>
+            <div class="form-group">
+                <label for="field" class="control-label">Field of Study</label>
+                <select multiple class="form-control" th:field="*{field}">
+                    <option value="Computer Security">Computer Security</option>
+                    <option value="Data Science">Data Science</option>
+                    <option value="Distributed Systems">Distributed Systems</option>
+                    <option value="Gaming and Entertainment Technology">Gaming and Entertainment Technology</option>
+                    <option value="Introductory Courses">Introductory Courses</option>
+                    <option value="Programming Languages and Compiler">Programming Languages and Compiler</option>
+                    <option value="Project Management">Project Management</option>
+                    <option value="Software Architecture">Software Architecture</option>
+                    <option value="Software Development">Software Development</option>
+                    <option value="Software Engineering">Software Engineering</option>
+                    <option value="Software Engineering Research">Software Engineering Research</option>
+                    <option value="User Centered Development">User Centered Development</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="prerequisites" class="control-label">Prerequisites</label>
+                <input type="text" class="form-control" th:field="*{prerequisites}" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Create Course</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

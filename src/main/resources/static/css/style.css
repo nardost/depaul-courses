@@ -1,3 +1,10 @@
 body {
     font-family: Sans-Serif
 }
+tr.course-line {
+    cursor: pointer;
+}
+tr.course-line:hover {
+    background-color: gray;
+    color: white;
+}

@@ -17,27 +17,34 @@
 <body>
 <div class="container">
     <h1>SOFTWARE ENGINEERING</h1>
-    <h2>Software Development Concentration</h2>
-    <h3>Course Catalog</h3>
+    <h3>Software Development Concentration Course Catalog</h3>
     <div th:if="${courses == null}">
         <h1 class="bg-danger">No courses found!</h1>
     </div>
-    <div th:unless="${courses == null}" class="table-responsive">
-    <table class="table table-striped">
+    <div class="table-responsive" th:unless="${courses == null}">
+    <table class="table">
+        <thead>
         <tr>
-            <th>CATALOG NO.</th>
-            <th>COURSE NAME</th>
+            <th>#</th>
+            <th>CATALOG NBR</th>
+            <th>COURSE TITLE</th>
             <th>PREREQUISITES</th>
             <th>CATEGORY</th>
             <th>FIELD</th>
         </tr>
-        <tr th:each="course : ${courses}">
-            <td><a th:href="${'/course/' + course.id}"><span th:text="${course.id}" /></a></td>
-            <td th:text="${course.name}"></td>
-            <td th:text="${course.prerequisites}"></td>
-            <td th:text="${course.category}"></td>
-            <td th:text="${course.field}"></td>
+        </thead>
+        <tbody>
+        <tr th:each="course, iteration : ${courses}"
+            th:data-link="'/course/' + ${course.id}"
+            onclick="location.href=this.getAttribute('data-link')" class="course-line">
+            <td>[[${iteration.count}]]</td>
+            <td>[[${course.id}]]</td>
+            <td>[[${course.title}]]</td>
+            <td>[[${course.prerequisites}]]</td>
+            <td>[[${course.category}]]</td>
+            <td>[[${course.field}]]</td>
         </tr>
+        </tbody>
     </table>
     </div>
 </div>

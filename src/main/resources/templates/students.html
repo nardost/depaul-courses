@@ -17,20 +17,29 @@
 <body>
 <div class="container">
     <h1>SOFTWARE ENGINEERING</h1>
-    <h2>Software Development Concentration</h2>
-    <h3>Course Details</h3>
-    <div th:if="${course == null}">
-        <h1 class="bg-danger">No course with catalog number [[${catalogNumber}]] found!</h1>
+    <h3>Student List</h3>
+    <div th:if="${students == null}">
+        <h1 class="bg-danger">No students found!</h1>
     </div>
-    <div th:unless="${course == null}" class="table-responsive">
-        <table class="table table-condensed">
+    <div class="table-responsive" th:unless="${students == null}">
+        <table class="table">
             <thead>
-                <tr><th colspan="2">[[${course.id}]]: [[${course.title}]]</th></tr>
+            <tr>
+                <th>#</th>
+                <th>STUDENT ID</th>
+                <th>NAME (LAST, FIRST)</th>
+                <th>EMAIL</th>
+                <th>CONCENTRATION</th>
+            </tr>
             </thead>
             <tbody>
-                <tr><td>Category</td><td>[[${course.category}]]</td></tr>
-                <tr><td>Field</td><td>[[${course.field}]]</td></tr>
-                <tr><td>Prerequisites</td><td>[[${course.prerequisites}]]</td></tr>
+            <tr th:each="student, iteration : ${students}">
+                <td>[[${iteration.count}]]</td>
+                <td>[[${student.id}]]</td>
+                <td>[[${student.lastName}]], [[${student.firstName}]]</td>
+                <td>[[${student.email}]]</td>
+                <td>[[${student.concentration}]]</td>
+            </tr>
             </tbody>
         </table>
     </div>
