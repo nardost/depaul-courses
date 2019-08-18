@@ -1,7 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Internal Server Error - 500</title>
+    <th:block th:replace="fragments :: links" />
+</head>
 <body>
-<h1>Internal Server Error (Status Code 500)</h1>
-<a href="/">Go Home</a>
+<div class="container">
+    <div class="header">
+        <th:block th:insert="fragments :: navbar" />
+    </div>
+    <h1>Internal Server Error (Status Code 500)</h1>
+    <div class="footer">
+        <th:block th:insert="fragments :: footer" />
+    </div>
+</div>
 </body>
 </html>

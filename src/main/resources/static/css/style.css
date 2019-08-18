@@ -8,3 +8,7 @@ tr.course-line:hover {
     background-color: gray;
     color: white;
 }
+footer.gray div {
+    background-color: gray;
+    color: white;
+}

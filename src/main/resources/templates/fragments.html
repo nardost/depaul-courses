@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:fragment="links">
+    <meta charset="UTF-8">
+    <link th:href="@{/webjars/font-awesome/5.10.1/css/all.css}" rel="stylesheet">
+    <link th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}" rel="stylesheet" />
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" media="screen" />
+    </th:block>
+</head>
+<body>
+<div>
+    <th:block th:fragment="navbar">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#"><i class="fas fa-user-graduate"></i></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/courses">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/students">Students</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+    </th:block>
+</div>
+<div class="footer">
+    <th:block  th:fragment="footer">
+        <footer class="page-footer font-small bg-dark">
+            <div class="footer-copyright text-center py-3">
+                <i class="fas fa-chart-pie"></i>www.nardos.dev
+            </div>
+            <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+            <script th:src="@{/webjars/popper.js/1.15.0/umd/popper.min.js}"></script>
+            <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}" ></script>
+        </footer>
+    </th:block>
+</div>
+</body>
+</html>

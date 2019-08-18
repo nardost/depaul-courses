@@ -1,21 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"
-          rel="stylesheet" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"
-            th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
-    <script src="https://d3js.org/d3.v4.min.js"
-            th:src="@{/webjars/d3js/4.13.0/d3.min.js}"></script>
-
-    <link href="../static/css/style.css"
-          th:href="@{/css/style.css}" rel="stylesheet" media="screen" />
-    <meta charset="UTF-8">
-    <title>Courses List</title>
+    <title>Course Form</title>
+    <th:block th:replace="fragments :: head('Course Form')" />
 </head>
 <body>
 <div class="container">
+    <div class="header">
+        <th:block th:insert="fragments :: navbar" />
+    </div>
     <h1>SOFTWARE ENGINEERING</h1>
     <h2>Software Development Concentration</h2>
     <h3>New Course Entry Form</h3>
@@ -97,6 +90,9 @@
                 <button type="submit" class="btn btn-primary">Create Course</button>
             </div>
         </form>
+    </div>
+    <div class="footer">
+        <th:block th:insert="fragments :: footer" />
     </div>
 </div>
 </body>
