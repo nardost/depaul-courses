@@ -39,6 +39,7 @@ public class Mvc101Controller {
         List<Course> courses = getCourseService().getAllCourses();
         if(courses != null && !courses.isEmpty()) {
             model.addAttribute("courses", courses);
+            model.addAttribute("pageTitle", "Courses List");
         }
         return "courses";
     }
@@ -48,18 +49,21 @@ public class Mvc101Controller {
         Course course = getCourseService().getCourseById(id);
         model.addAttribute("catalogNumber", id);
         model.addAttribute("course", course);
+        model.addAttribute("pageTitle", "Courses Detail");
         return "course";
     }
 
     @GetMapping("/course/create")
     public String createCourse(Model model) {
         model.addAttribute("course", new Course());
+        model.addAttribute("pageTitle", "New Course Form");
         return "course-form";
     }
 
     @GetMapping("/course/update/{id}")
     public String updateCourse(@PathVariable String id, Model model) {
         model.addAttribute("course", getCourseService().getCourseById(id));
+        model.addAttribute("pageTitle", "Course Update Form");
         model.addAttribute("idReadOnly", true);
         return "course-form";
     }
@@ -74,6 +78,7 @@ public class Mvc101Controller {
     public String students(Model model) {
         List<Student> students = getStudentService().getAllStudents();
         model.addAttribute("students", students);
+        model.addAttribute("pageTitle", "Students List");
         return "students";
     }
 }

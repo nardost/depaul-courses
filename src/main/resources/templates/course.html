@@ -5,31 +5,39 @@
     <th:block th:replace="fragments :: links" />
 </head>
 <body>
+<div class="header container">
+    <th:block th:insert="fragments :: navbar" />
+</div>
 <div class="container">
-    <div class="header">
-        <th:block th:insert="fragments :: navbar" />
-    </div>
-    <h1>SOFTWARE ENGINEERING</h1>
-    <h2>Software Development Concentration</h2>
-    <h3>Course Details</h3>
+    <div th:insert="fragments :: breadcrumb" />
     <div th:if="${course == null}">
         <h1 class="bg-danger">No course with catalog number [[${catalogNumber}]] found!</h1>
     </div>
     <div th:unless="${course == null}" class="table-responsive">
-        <table class="table table-condensed">
-            <thead>
-                <tr><th colspan="2">[[${course.id}]]: [[${course.title}]]</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>Category</td><td>[[${course.category}]]</td></tr>
-                <tr><td>Field</td><td>[[${course.field}]]</td></tr>
-                <tr><td>Prerequisites</td><td>[[${course.prerequisites}]]</td></tr>
-            </tbody>
-        </table>
+        <div class="card border-secondary mb-3">
+            <div class="card-header">
+                <h2>[[${course.id}]]</h2>
+                <h3 class="card-title">[[${course.title}]]</h3>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Field: [[${course.field}]]</li>
+                <li class="list-group-item">Category: [[${course.category}]]</li>
+            </ul>
+            <div class="card-body">
+                <h4>Prerequisites</h4>
+                <ul th:if="${course.prerequisites != null && course.prerequisites != ''}" class="list-group list-group-flush">
+                    <li class="list-group-item">[[${course.prerequisites}]]</li>
+                </ul>
+                <p th:unless="${course.prerequisites != null && course.prerequisites != ''}">None</p>
+            </div>
+            <div class="card-body">
+                <a th:href="${'/course/update/' + course.id}" class="btn btn-primary">Update [[${course.id}]]</a>
+            </div>
+        </div>
     </div>
-    <div class="footer">
-        <th:block th:insert="fragments :: footer" />
-    </div>
+</div>
+<div class="footer container">
+    <th:block th:insert="fragments :: footer" />
 </div>
 </body>
 </html>

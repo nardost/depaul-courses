@@ -5,14 +5,14 @@
     <th:block th:replace="fragments :: links" />
 </head>
 <body>
+<div class="header container">
+    <th:block th:insert="fragments :: navbar" />
+</div>
 <div class="container">
-    <div class="header">
-        <th:block th:insert="fragments :: navbar" />
-    </div>
     <h1>Page not found (Status Code 404)</h1>
-    <div class="footer">
-        <th:block th:insert="fragments :: footer" />
-    </div>
+</div>
+<div class="footer container">
+    <th:block th:insert="fragments :: footer" />
 </div>
 </body>
 </html>

@@ -5,12 +5,11 @@
     <th:block th:include="fragments :: links" />
 </head>
 <body>
+<div class="header container">
+    <th:block th:insert="fragments :: navbar" />
+</div>
 <div class="container">
-    <div class="header">
-        <th:block th:insert="fragments :: navbar" />
-    </div>
-    <h1>SOFTWARE ENGINEERING</h1>
-    <h3>Student List</h3>
+    <div th:insert="fragments :: breadcrumb" />
     <div th:if="${students == null}">
         <h1 class="bg-danger">No students found!</h1>
     </div>
@@ -36,9 +35,9 @@
             </tbody>
         </table>
     </div>
-    <div class="footer">
-        <th:block th:insert="fragments :: footer" />
-    </div>
+</div>
+<div class="footer container">
+    <th:block th:insert="fragments :: footer" />
 </div>
 </body>
 </html>
