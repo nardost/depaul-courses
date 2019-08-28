@@ -2,37 +2,41 @@ package dev.nardos.springmvc101.controllers;
 
 import dev.nardos.springmvc101.model.Course;
 import dev.nardos.springmvc101.services.CourseService;
+import dev.nardos.springmvc101.services.StudentService;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
+import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+@RunWith(MockitoJUnitRunner.class)
 public class Mvc101ControllerTest {
 
     private MockMvc mockMvc;
 
-    @InjectMocks
-    private Mvc101Controller mvc101Controller;
+    @Mock private CourseService courseService;
 
-    @Mock
-    private CourseService courseService;
+    @Mock private StudentService studentService;
+
+    @InjectMocks private Mvc101Controller mvc101Controller;
+
 
     @Before
     public void setup() {
-        MockitoAnnotations.initMocks(this);
+        //MockitoAnnotations.initMocks(this); //either this or the @RunWith above
         mockMvc = MockMvcBuilders.standaloneSetup(mvc101Controller).build();
     }
 
@@ -51,10 +55,15 @@ public class Mvc101ControllerTest {
         courses.add(new Course());
         courses.add(new Course());
 
+        verifyZeroInteractions(courseService);
+
         when(courseService.getAllCourses()).thenReturn((List) courses);
         mockMvc.perform(get("/courses/")) /* the trailing / makes a difference!!! */
                 .andExpect(status().isOk())
                 .andExpect(view().name("courses"))
                 .andExpect(model().attribute("courses", hasSize(3)));
+
+
+        verifyZeroInteractions(studentService);
     }
 }
