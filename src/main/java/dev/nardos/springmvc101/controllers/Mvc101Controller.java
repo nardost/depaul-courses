@@ -15,11 +15,9 @@ import java.util.List;
 public class Mvc101Controller {
 
 
-    @Autowired
-    private CourseService courseService;
+    @Autowired private CourseService courseService;
 
-    @Autowired
-    private StudentService studentService;
+    @Autowired private StudentService studentService;
 
     private CourseService getCourseService() {
         return this.courseService;
