@@ -11,11 +11,11 @@ import java.util.Map;
 
 @Service
 @Profile(value = "map")
-public class MapCourseService implements CourseService {
+public class CourseServiceMapImpl implements CourseService {
 
     private Map<String, Course> coursesMap;
 
-    public MapCourseService() {
+    public CourseServiceMapImpl() {
         this.coursesMap = new HashMap<>();
         loadCourses();
     }

@@ -8,7 +8,7 @@ import java.util.List;
 
 @Service
 @Profile(value = "null")
-public class NullCoursesService implements CourseService {
+public class CoursesServiceNullImpl implements CourseService {
     @Override
     public List<Course> getAllCourses() {
         return null;

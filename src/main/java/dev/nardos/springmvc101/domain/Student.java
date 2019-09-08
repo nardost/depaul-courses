@@ -1,12 +1,20 @@
 package dev.nardos.springmvc101.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Student {
 
-    String id;
-    String firstName;
-    String lastName;
-    String email;
-    String concentration;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private String id;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String concentration;
 
     public Student() {
     }

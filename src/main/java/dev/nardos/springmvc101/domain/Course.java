@@ -1,13 +1,20 @@
 package dev.nardos.springmvc101.model;
 
+import javax.annotation.Generated;
+import javax.persistence.*;
+
+@Entity
 public class Course {
-    String id;
-    String subject;
-    Integer catalogNumber;
-    String title;
-    String prerequisites;
-    String category;
-    String field;
+
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private String id;
+    @Version Integer version;
+    private String subject;
+    private Integer catalogNumber;
+    private String title;
+    private String prerequisites;
+    private String category;
+    private String field;
 
     public Course() {
     }
@@ -24,6 +31,10 @@ public class Course {
 
     public String getId() {
         return id;
+    }
+
+    public Integer getVersion() {
+        return version;
     }
 
     public String getSubject() {
@@ -52,6 +63,10 @@ public class Course {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 
     public void setSubject(String subject) {

@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class MapStudentService implements StudentService {
+public class StudentServiceMapImpl implements StudentService {
 
     private Map<String, Student> studentsMap;
 
-    public MapStudentService() {
+    public StudentServiceMapImpl() {
         this.studentsMap = new HashMap<>();
         loadStudents();
     }
