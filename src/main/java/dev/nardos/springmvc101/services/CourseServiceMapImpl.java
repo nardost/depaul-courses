@@ -1,6 +1,6 @@
 package dev.nardos.springmvc101.services;
 
-import dev.nardos.springmvc101.model.Course;
+import dev.nardos.springmvc101.domain.Course;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -40,6 +40,11 @@ public class CourseServiceMapImpl implements CourseService {
         course.setId(id);
         getCoursesMap().put(id, course);
         return course;
+    }
+
+    @Override
+    public void deleteCourse(String id) {
+        getCoursesMap().remove(id);
     }
 
     private void loadCourses() {

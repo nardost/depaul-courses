@@ -1,6 +1,6 @@
 package dev.nardos.springmvc101.services;
 
-import dev.nardos.springmvc101.model.Student;
+import dev.nardos.springmvc101.domain.Student;
 
 import java.util.List;
 

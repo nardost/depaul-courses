@@ -1,7 +1,7 @@
 package dev.nardos.springmvc101.controllers;
 
-import dev.nardos.springmvc101.model.Course;
-import dev.nardos.springmvc101.model.Student;
+import dev.nardos.springmvc101.domain.Course;
+import dev.nardos.springmvc101.domain.Student;
 import dev.nardos.springmvc101.services.CourseService;
 import dev.nardos.springmvc101.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,15 +1,13 @@
 package dev.nardos.springmvc101.controllers;
 
-import dev.nardos.springmvc101.model.Course;
+import dev.nardos.springmvc101.domain.Course;
 import dev.nardos.springmvc101.services.CourseService;
 import dev.nardos.springmvc101.services.StudentService;
-import org.hamcrest.Matcher;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;

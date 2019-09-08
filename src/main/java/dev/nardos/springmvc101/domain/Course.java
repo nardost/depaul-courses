@@ -1,12 +1,15 @@
-package dev.nardos.springmvc101.model;
+package dev.nardos.springmvc101.domain;
 
-import javax.annotation.Generated;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
 public class Course {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
     @Version Integer version;
     private String subject;
